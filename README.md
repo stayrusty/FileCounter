@@ -25,6 +25,24 @@ Invoke-ps2exe .\combined.ps1 .\FileCounter.exe -iconFile .\resources\icon.ico -t
 Remove-Item .\combined.ps1
 ```
 
+## Usage
+
+### Application Start
+
+<a href="https://postimg.cc/4KfpHtCt" target="_blank"><img src="https://i.postimg.cc/4KfpHtCt/1-Application-Start.jpg" alt="1-Application-Start"/></a>
+
+### List Directories
+
+<a href="https://postimg.cc/0M3S4Bzd" target="_blank"><img src="https://i.postimg.cc/0M3S4Bzd/2-List-of-Directories.jpg" alt="2-List-of-Directories"/></a>
+
+### Choose Directory
+
+<a href="https://postimg.cc/HJ6XwxHN" target="_blank"><img src="https://i.postimg.cc/HJ6XwxHN/3-Enter-directory.jpg" alt="3-Enter-directory"/></a>
+
+### Results Display
+
+<a href="https://postimg.cc/47ntBgxx" target="_blank"><img src="https://i.postimg.cc/47ntBgxx/4-Results.jpg" alt="4-Results"/></a>
+
 ## Contributing
 
 Pull requests are welcome.
