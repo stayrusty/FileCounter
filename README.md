@@ -29,19 +29,19 @@ Remove-Item .\combined.ps1
 
 ### Application Start
 
-<a href="https://postimg.cc/4KfpHtCt" target="_blank"><img src="https://i.postimg.cc/4KfpHtCt/1-Application-Start.jpg" alt="1-Application-Start"/></a>
+<a href="https://postimg.cc/4KfpHtCt" target="_blank"><img src="https://i.postimg.cc/pd8C7Yq0/1-Application-Start.jpg" alt="1-Application-Start"/></a>
 
 ### List Directories
 
-<a href="https://postimg.cc/0M3S4Bzd" target="_blank"><img src="https://i.postimg.cc/0M3S4Bzd/2-List-of-Directories.jpg" alt="2-List-of-Directories"/></a>
+<a href="https://postimg.cc/0M3S4Bzd" target="_blank"><img src="https://i.postimg.cc/hv40XFgw/2-List-of-Directories.jpg" alt="2-List-of-Directories"/></a>
 
 ### Choose Directory
 
-<a href="https://postimg.cc/HJ6XwxHN" target="_blank"><img src="https://i.postimg.cc/HJ6XwxHN/3-Enter-directory.jpg" alt="3-Enter-directory"/></a>
+<a href="https://postimg.cc/HJ6XwxHN" target="_blank"><img src="https://i.postimg.cc/XJbL0GPn/3-Enter-directory.jpg" alt="3-Enter-directory"/></a>
 
 ### Results Display
 
-<a href="https://postimg.cc/47ntBgxx" target="_blank"><img src="https://i.postimg.cc/47ntBgxx/4-Results.jpg" alt="4-Results"/></a>
+<a href="https://postimg.cc/47ntBgxx" target="_blank"><img src="https://i.postimg.cc/DZPgffVL/4-Results.jpg" alt="4-Results"/></a>
 
 ## Contributing
 
