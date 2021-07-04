@@ -1,0 +1,40 @@
+
+# Created by https://www.toptal.com/developers/gitignore/api/powershell,executable,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=powershell,executable,visualstudiocode
+
+### Executable ###
+*.app
+*.bat
+*.cgi
+*.com
+*.exe
+*.gadget
+*.jar
+*.pif
+*.vb
+*.wsf
+
+### PowerShell ###
+# Exclude packaged modules
+*.zip
+
+# Exclude .NET assemblies from source
+*.dll
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+# End of https://www.toptal.com/developers/gitignore/api/powershell,executable,visualstudiocode

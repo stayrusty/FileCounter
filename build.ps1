@@ -9,3 +9,4 @@ if ($filecounter) { Stop-Process -Name "filecounter" }
 
 Invoke-ps2exe .\combined.ps1 .\FileCounter.exe -iconFile .\resources\icon.ico -title "FileCounter" -version 1.0.0.0000
 Remove-Item .\combined.ps1
+#&.\FileCounter.exe

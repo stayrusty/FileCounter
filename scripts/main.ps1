@@ -18,10 +18,12 @@ while (!$Exit) {
     }
 
     $global:Path = Read-Host -Prompt "Enter directory to count (i.e. `"SomeDrive:\SomeFolder`")"
+    ""
     if (!$global:Path) { $global:Path = Get-Location }
 
     while ($global:Path) {
         Test-Item $global:Path
+        if (!$global:Path) { break }
 
         $global:Stopwatch.Restart()
 
@@ -31,18 +33,18 @@ while (!$Exit) {
 
         $result = ""
         if(!$counts) {
-            ""
             Write-Host -NoNewline "No files found! " -ForegroundColor Red
-            $result = "Enter new directory to count (leave blank for list) or Ctrl+C to exit"
+            $result = "Enter new directory to count (blank = list of directories) or Ctrl+C to exit: "
         }
         else {
             $counts | Out-Host
             Write-Host -NoNewLine "Count completed in "
             Write-Host -NoNewline "$($global:Stopwatch.Elapsed.ToString())" -ForegroundColor Yellow
-            $result = ". Enter new directory to count (leave blank for list) or Ctrl+C to exit"
+            $result = ". Enter new directory to count (blank = list of directories) or Ctrl+C to exit: "
         }
 
-        $global:Path = Read-Host -Prompt $result
+        Write-Host -NoNewLine $result
+        $global:Path = $Host.UI.ReadLine()
         ""
     }
 }
