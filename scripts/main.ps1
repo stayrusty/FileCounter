@@ -27,16 +27,39 @@ while (!$Exit) {
 
         $global:Stopwatch.Restart()
 
-        $counts = Get-Childitem $global:Path -Recurse -file | Group-Object Extension -NoElement | Sort-Object Count -desc
+        $totals = 0
+        $counts = Get-Childitem $global:Path -Recurse -File | Group-Object Extension | ForEach-Object {
+            $size = ($_.Group | Measure-Object Length -Sum).Sum
+            if ($size -gt 1TB) {
+                $str_size = [string][math]::Round(($size) / 1TB, 2) + " TB"
+            }
+            elseif ($size -gt 1GB) {
+                $str_size = [string][math]::Round(($size) / 1GB, 2) + " GB"
+            }
+            elseif ($size -gt 1KB) {
+                $str_size = [string][math]::Round(($size) / 1KB, 2) + " KB"
+            }
+            else {
+                $str_size = [string][math]::Round(($size), 2) + " B"
+            }
+            New-Object PsObject -Property @{ 
+                Count        = $_.Count
+                Extension    = $_.Name
+                "Total Size" = $str_size
+            }
+            $totals += $_.Count
+        } | Select-Object Count, Extension, "Total Size" | Sort-Object @{Expression = "Count"; Descending = $true }, Extension | Format-Table -Auto
 
         $global:Stopwatch.Stop()
 
         $result = ""
-        if(!$counts) {
+        if (!$counts) {
             Write-Host -NoNewline "No files found! " -ForegroundColor Red
             $result = "Enter new directory to count (blank = list of directories) or Ctrl+C to exit: "
         }
         else {
+            Write-Host $totals "files found!"
+            ""
             $counts | Out-Host
             Write-Host -NoNewLine "Count completed in "
             Write-Host -NoNewline "$($global:Stopwatch.Elapsed.ToString())" -ForegroundColor Yellow
