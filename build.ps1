@@ -7,6 +7,6 @@ if ($filecounter) { Stop-Process -Name "filecounter" }
     "`n{0}`n" -f (Get-Content -Raw $_.FullName) 
   }) -join "`n`n" > "combined.ps1"
 
-Invoke-ps2exe .\combined.ps1 .\FileCounter.exe -iconFile .\resources\icon.ico -title "FileCounter" -version 1.0.1.0000
+Invoke-ps2exe .\combined.ps1 .\FileCounter.exe -iconFile .\resources\icon.ico -title "FileCounter" -version 1.0.1.0001
 Remove-Item .\combined.ps1
 #&.\FileCounter.exe

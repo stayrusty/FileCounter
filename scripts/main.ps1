@@ -36,6 +36,9 @@ while (!$Exit) {
             elseif ($size -gt 1GB) {
                 $str_size = [string][math]::Round(($size) / 1GB, 2) + " GB"
             }
+            elseif ($size -gt 1MB) {
+                $str_size = [string][math]::Round(($size) / 1MB, 2) + " MB"
+            }
             elseif ($size -gt 1KB) {
                 $str_size = [string][math]::Round(($size) / 1KB, 2) + " KB"
             }
