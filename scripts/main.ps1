@@ -12,7 +12,7 @@ while (!$Exit) {
     $drives = Get-PSDrive -PSProvider FileSystem | Select-Object -ExpandProperty Root
     ForEach ($i in $drives) {
         Write-Host $i
-        Write-Host "--------------------"
+        Write-Host $("-" * 20)
         Get-ChildItem $i -Directory | Select-Object Name | ForEach-Object { $_.Name } | Out-Host
         ""
     }
@@ -22,36 +22,24 @@ while (!$Exit) {
     if (!$global:Path) { $global:Path = Get-Location }
 
     while ($global:Path) {
-        Test-Item $global:Path
+        Test-MyPath $global:Path
         if (!$global:Path) { break }
 
         $global:Stopwatch.Restart()
 
-        $totals = 0
+        $totalcount = 0
+        $totalsize = 0
         $counts = Get-Childitem $global:Path -Recurse -File | Group-Object Extension | ForEach-Object {
             $size = ($_.Group | Measure-Object Length -Sum).Sum
-            if ($size -gt 1TB) {
-                $str_size = [string][math]::Round(($size) / 1TB, 2) + " TB"
-            }
-            elseif ($size -gt 1GB) {
-                $str_size = [string][math]::Round(($size) / 1GB, 2) + " GB"
-            }
-            elseif ($size -gt 1MB) {
-                $str_size = [string][math]::Round(($size) / 1MB, 2) + " MB"
-            }
-            elseif ($size -gt 1KB) {
-                $str_size = [string][math]::Round(($size) / 1KB, 2) + " KB"
-            }
-            else {
-                $str_size = [string][math]::Round(($size), 2) + " B"
-            }
             New-Object PsObject -Property @{ 
                 Count        = $_.Count
                 Extension    = $_.Name
-                "Total Size" = $str_size
+                Size         = $size
+                "Total Size" = Get-FileSizeString $size
             }
-            $totals += $_.Count
-        } | Select-Object Count, Extension, "Total Size" | Sort-Object @{Expression = "Count"; Descending = $true }, Extension | Format-Table -Auto
+            $totalcount += $_.Count
+            $totalsize += $size
+        } | Sort-Object Size -Descending | Format-Table -Property Extension, Count, "Total Size"
 
         $global:Stopwatch.Stop()
 
@@ -61,7 +49,13 @@ while (!$Exit) {
             $result = "Enter new directory to count (blank = list of directories) or Ctrl+C to exit: "
         }
         else {
-            Write-Host $totals "files found!"
+            $linepart = "Totals for "
+            Write-Host -NoNewLine $linepart
+            Write-Host $global:Path -ForegroundColor Green
+            Write-Host $("-" * ($linepart.Length + $global:Path.Length))
+            ""
+            Write-Host "Files: " $totalcount
+            Write-Host "Size:  " $(Get-FileSizeString $totalsize)
             ""
             $counts | Out-Host
             Write-Host -NoNewLine "Count completed in "
