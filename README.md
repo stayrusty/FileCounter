@@ -41,7 +41,7 @@ Remove-Item .\combined.ps1
 
 ### Results Display
 
-<a href="https://postimg.cc/47ntBgxx" target="_blank"><img src="https://i.postimg.cc/DZPgffVL/4-Results.jpg" alt="4-Results"/></a>
+<a href="https://postimg.cc/47ntBgxx" target="_blank"><img src="https://i.postimg.cc/L5h47PDk/4-Results.jpg" alt="4-Results"/></a>
 
 ## Contributing
 
